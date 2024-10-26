@@ -3,10 +3,18 @@
 #include <math.h>
 #include <stdbool.h>
 
+/* * * * * * * * * * * * *
+ * Function declarations *
+ * * * * * * * * * * * * */
+
 void printSeries(const int* series, const int count);
 int sumSeries(const int* series, const int count);
 int getUpperBound(const int count);
 int* generatePrimes(const int count);
+
+/* * * * *
+ * Main  *
+ * * * * */
 
 int main(int argc, char** argv) {
     if (argc == 2) {
@@ -25,21 +33,9 @@ int main(int argc, char** argv) {
     }
 }
 
-void printSeries(const int* series, const int count) {
-    for (size_t i = 0; i < count; i++) {
-        printf("%d%s", series[i], i == count - 1 ? "\n" : ", ");
-    }
-}
-
-int sumSeries(const int* series, const int count) {
-    int sum = 0;
-
-    for (size_t i = 0; i < count; i++) {
-        sum += series[i];
-    }
-
-    return sum;
-}
+/* * * * * * * * * * * * * *
+ * Prime number functions  *
+ * * * * * * * * * * * * * */
 
 int* generatePrimes(const int count) {
     const double upper_bound = getUpperBound(count);
@@ -89,4 +85,24 @@ int getUpperBound(const int count) {
     return count < 6
         ? (int[]){0, 2, 3, 5, 7, 11}[count]
         : count * (log(count) + log(log(count)));
+}
+
+/* * * * * * * * * * *
+ * Utility functions *
+ * * * * * * * * * * */
+
+void printSeries(const int* series, const int count) {
+    for (size_t i = 0; i < count; i++) {
+        printf("%d%s", series[i], i == count - 1 ? "\n" : ", ");
+    }
+}
+
+int sumSeries(const int* series, const int count) {
+    int sum = 0;
+
+    for (size_t i = 0; i < count; i++) {
+        sum += series[i];
+    }
+
+    return sum;
 }
