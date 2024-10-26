@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
         printf("\nSum: %d\n\n", sumSeries(primes, count));
 
         // Yep. We're freeing the memory just for show here.
-        free(primes);
+        free((int*)primes);
     } else {
         printf("Proper usage: %s <number of primes>\n", argv[0]);
         return 1;
