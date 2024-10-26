@@ -11,7 +11,9 @@ int* generatePrimes(const int count);
 int main(int argc, char** argv) {
     if (argc == 2) {
         const int count = atoi(argv[1]);
-        printf("%d\n", sumPrimes(count));
+        printf("\n");
+        printPrimes(count);
+        printf("\nSum: %d\n\n", sumPrimes(count));
     } else {
         printf("Proper usage: %s <number of primes>\n", argv[0]);
         return 1;
