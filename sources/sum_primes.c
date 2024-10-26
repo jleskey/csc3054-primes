@@ -3,41 +3,40 @@
 #include <math.h>
 #include <stdbool.h>
 
-void printPrimes(const int count);
-int sumPrimes(const int count);
+void printSeries(const int* series, const int count);
+int sumSeries(const int* series, const int count);
 int getUpperBound(const int count);
 int* generatePrimes(const int count);
 
 int main(int argc, char** argv) {
     if (argc == 2) {
         const int count = atoi(argv[1]);
+        const int* primes = generatePrimes(count);
+
         printf("\n");
-        printPrimes(count);
-        printf("\nSum: %d\n\n", sumPrimes(count));
+        printSeries(primes, count);
+        printf("\nSum: %d\n\n", sumSeries(primes, count));
+
+        // Yep. We're freeing the memory just for show here.
+        free(primes);
     } else {
         printf("Proper usage: %s <number of primes>\n", argv[0]);
         return 1;
     }
 }
 
-void printPrimes(const int count) {
-    int* primes = generatePrimes(count);
+void printSeries(const int* series, const int count) {
     for (size_t i = 0; i < count; i++) {
-        printf("%d%s", primes[i], i == count - 1 ? "\n" : ", ");
+        printf("%d%s", series[i], i == count - 1 ? "\n" : ", ");
     }
-    free(primes);
 }
 
-int sumPrimes(const int count) {
-    int* primes = generatePrimes(count);
-
+int sumSeries(const int* series, const int count) {
     int sum = 0;
 
     for (size_t i = 0; i < count; i++) {
-        sum += primes[i];
+        sum += series[i];
     }
-
-    free(primes);
 
     return sum;
 }
