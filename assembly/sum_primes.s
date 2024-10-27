@@ -23,7 +23,10 @@ loop:
 store:
     la      t1, sum                                 # t1: sum pointer
     sw      t0, 0(t1)                               # Store sum.
+interrupt:
+    j       end                                     # Fail, dumping registers.
 exit:
     li      a0, 0                                   # a0: exit code
     li      a7, 93                                  # a7: exit syscall
     ecall                                           # Execute syscall.
+end:
