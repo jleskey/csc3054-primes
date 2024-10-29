@@ -2,27 +2,24 @@
 #include <math.h>
 #include <stdbool.h>
 
+int isPrime(int x);
+
 int main() {
-    int counter = 0;
     int sum = 0;
-    int num = 2;
 
-    while (counter < 10) {
-        int isPrime = true;
-
-        for (int i = 2; i <= sqrt(num) && isPrime; i++) {
-            if (num % i == 0) {
-                isPrime = false;
-            }
-        }
-
-        if (isPrime) {
+    for (int count = 0, num = 2; count < 10; num++) {
+        if (isPrime(num)) {
             sum += num;
-            counter++;
+            count++;
         }
-
-        num++;
     }
 
     printf("Sum: %d\n", sum);
+}
+
+int isPrime(int x) {
+    for (int i = 2; i <= sqrt(x); i++)
+        if (x % i == 0)
+            return false;
+    return true;
 }
