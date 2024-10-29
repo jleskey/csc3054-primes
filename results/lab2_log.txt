@@ -1,0 +1,57 @@
+Last login: Tue Oct 29 00:00:08 on console
+joseph@LJ-L23 ~ % ssh joseph@10.105.48.62
+Last login: Mon Oct 28 23:34:12 EDT 2024 from 10.105.48.16 on ssh
+Have a lot of fun...
+joseph@localhost:~> cd primes/csc3054-primes/
+joseph@localhost:~/primes/csc3054-primes> gcc -lm -o bin/nprimes sources/nprimes.c 
+joseph@localhost:~/primes/csc3054-primes> ./bin/nprimes 10
+
+2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+
+Sum: 129
+
+joseph@localhost:~/primes/csc3054-primes> riscv64-elf-gcc -o bin/nprimes-jmath sources/nprimes-jmath.c 
+joseph@localhost:~/primes/csc3054-primes> ./bin/nprimes-jmath 10
+-bash: ./bin/nprimes-jmath: cannot execute binary file: Exec format error
+joseph@localhost:~/primes/csc3054-primes> spike /usr/local/riscv64-elf/bin/pk bin/nprimes-jmath 10
+
+2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+
+Sum: 129
+
+joseph@localhost:~/primes/csc3054-primes> riscv64-elf-gcc -o bin/sum_primes assembly/sum_primes.s 
+joseph@localhost:~/primes/csc3054-primes> riscv64-elf-objdump --disassemble-all bin/sum_primes > extractions/sum_primes.dump
+joseph@localhost:~/primes/csc3054-primes> Read from remote host 10.105.48.62: Operation timed out
+Connection to 10.105.48.62 closed.
+client_loop: send disconnect: Broken pipe
+joseph@LJ-L23 ~ % ssh joseph@10.93.0.116 
+The authenticity of host '10.93.0.116 (10.93.0.116)' can't be established.
+ED25519 key fingerprint is SHA256:F1qd89yMGqU13dtRKC3LI/UZSb50/3IQMFpS/yixDVc.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:50: 10.105.48.62
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.93.0.116' (ED25519) to the list of known hosts.
+Last login: Tue Oct 29 00:01:06 EDT 2024 from 10.105.48.16 on ssh
+Have a lot of fun...
+joseph@localhost:~> cd primes/csc3054-primes/
+joseph@localhost:~/primes/csc3054-primes> less extractions/sum_primes.dump 
+joseph@localhost:~/primes/csc3054-primes> less extractions/sum_primes.dump 
+joseph@localhost:~/primes/csc3054-primes> less extractions/sum_primes.dump 
+joseph@localhost:~/primes/csc3054-primes> less assembly/sum_primes.s 
+joseph@localhost:~/primes/csc3054-primes> less extractions/sum_primes.dump 
+joseph@localhost:~/primes/csc3054-primes> spike -d /usr/local/riscv64-elf/bin/pk bin/sum_primes
+(spike) until pc 0 0000000000010268
+(spike) pc 0
+0x0000000000010268
+(spike) reg 0
+zero: 0x0000000000000000  ra: 0x00000000000101a6  sp: 0x0000003ffffffb50  gp: 0x0000000000013800
+  tp: 0x0000000000000000  t0: 0x0000000000000081  t1: 0x0000000000013000  t2: 0x0000000000000000
+  s0: 0x0000000000000000  s1: 0x0000000000000000  a0: 0x0000000000000001  a1: 0x0000003ffffffb58
+  a2: 0x0000000000000000  a3: 0x0000000000000010  a4: 0x0000000000012ff0  a5: 0x0000000000000000
+  a6: 0x000000000000001f  a7: 0x0000000000000000  s2: 0x0000000000000000  s3: 0x0000000000000000
+  s4: 0x0000000000000000  s5: 0x0000000000000000  s6: 0x0000000000000000  s7: 0x0000000000000000
+  s8: 0x0000000000000000  s9: 0x0000000000000000 s10: 0x0000000000000000 s11: 0x0000000000000000
+  t3: 0x000000000000001d  t4: 0x0000000000000000  t5: 0x0000000000000000  t6: 0x0000000000000000
+(spike) mem 0 13000
+0x0000000000000081
+(spike) 
