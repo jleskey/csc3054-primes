@@ -54,4 +54,18 @@ zero: 0x0000000000000000  ra: 0x00000000000101a6  sp: 0x0000003ffffffb50  gp: 0x
   t3: 0x000000000000001d  t4: 0x0000000000000000  t5: 0x0000000000000000  t6: 0x0000000000000000
 (spike) mem 0 13000
 0x0000000000000081
-(spike) 
+(spike) q
+joseph@localhost:~/primes/csc3054-primes> python3
+Python 3.11.10 (main, Sep 09 2024, 17:03:08) [GCC] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 1 ^ 1
+0
+>>> 0 ^ 1
+1
+>>> Read from remote host 10.93.0.116: Operation timed out
+Connection to 10.93.0.116 closed.
+client_loop: send disconnect: Broken pipe
+joseph@LJ-L23 ~ % curl opensuse.org
+joseph@LJ-L23 ~ % curl -L opensuse.org
+curl: (35) Recv failure: Connection reset by peer
+joseph@LJ-L23 ~ %    
