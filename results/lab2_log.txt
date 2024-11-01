@@ -3,42 +3,23 @@ joseph@LJ-L23 ~ % ssh joseph@10.105.48.62
 Last login: Mon Oct 28 23:34:12 EDT 2024 from 10.105.48.16 on ssh
 Have a lot of fun...
 joseph@localhost:~> cd primes/csc3054-primes/
-joseph@localhost:~/primes/csc3054-primes> gcc -lm -o bin/nprimes sources/nprimes.c 
+joseph@localhost:~/primes/csc3054-primes> gcc -lm -o bin/nprimes sources/nprimes.c
 joseph@localhost:~/primes/csc3054-primes> ./bin/nprimes 10
 
 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
 
 Sum: 129
 
-joseph@localhost:~/primes/csc3054-primes> riscv64-elf-gcc -o bin/nprimes-jmath sources/nprimes-jmath.c 
-joseph@localhost:~/primes/csc3054-primes> ./bin/nprimes-jmath 10
--bash: ./bin/nprimes-jmath: cannot execute binary file: Exec format error
+joseph@localhost:~/primes/csc3054-primes> riscv64-elf-gcc -o bin/nprimes-jmath sources/nprimes-jmath.c
 joseph@localhost:~/primes/csc3054-primes> spike /usr/local/riscv64-elf/bin/pk bin/nprimes-jmath 10
 
 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
 
 Sum: 129
 
-joseph@localhost:~/primes/csc3054-primes> riscv64-elf-gcc -o bin/sum_primes assembly/sum_primes.s 
+joseph@localhost:~/primes/csc3054-primes> riscv64-elf-gcc -o bin/sum_primes assembly/sum_primes.s
 joseph@localhost:~/primes/csc3054-primes> riscv64-elf-objdump --disassemble-all bin/sum_primes > extractions/sum_primes.dump
-joseph@localhost:~/primes/csc3054-primes> Read from remote host 10.105.48.62: Operation timed out
-Connection to 10.105.48.62 closed.
-client_loop: send disconnect: Broken pipe
-joseph@LJ-L23 ~ % ssh joseph@10.93.0.116 
-The authenticity of host '10.93.0.116 (10.93.0.116)' can't be established.
-ED25519 key fingerprint is SHA256:F1qd89yMGqU13dtRKC3LI/UZSb50/3IQMFpS/yixDVc.
-This host key is known by the following other names/addresses:
-    ~/.ssh/known_hosts:50: 10.105.48.62
-Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-Warning: Permanently added '10.93.0.116' (ED25519) to the list of known hosts.
-Last login: Tue Oct 29 00:01:06 EDT 2024 from 10.105.48.16 on ssh
-Have a lot of fun...
-joseph@localhost:~> cd primes/csc3054-primes/
-joseph@localhost:~/primes/csc3054-primes> less extractions/sum_primes.dump 
-joseph@localhost:~/primes/csc3054-primes> less extractions/sum_primes.dump 
-joseph@localhost:~/primes/csc3054-primes> less extractions/sum_primes.dump 
-joseph@localhost:~/primes/csc3054-primes> less assembly/sum_primes.s 
-joseph@localhost:~/primes/csc3054-primes> less extractions/sum_primes.dump 
+joseph@localhost:~/primes/csc3054-primes> less extractions/sum_primes.dump
 joseph@localhost:~/primes/csc3054-primes> spike -d /usr/local/riscv64-elf/bin/pk bin/sum_primes
 (spike) until pc 0 0000000000010268
 (spike) pc 0
@@ -55,102 +36,6 @@ zero: 0x0000000000000000  ra: 0x00000000000101a6  sp: 0x0000003ffffffb50  gp: 0x
 (spike) mem 0 13000
 0x0000000000000081
 (spike) q
-joseph@localhost:~/primes/csc3054-primes> python3
-Python 3.11.10 (main, Sep 09 2024, 17:03:08) [GCC] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> 1 ^ 1
-0
->>> 0 ^ 1
-1
->>> Read from remote host 10.93.0.116: Operation timed out
-Connection to 10.93.0.116 closed.
-client_loop: send disconnect: Broken pipe
-joseph@LJ-L23 ~ % curl opensuse.org
-joseph@LJ-L23 ~ % curl -L opensuse.org
-curl: (35) Recv failure: Connection reset by peer
-joseph@LJ-L23 ~ % ssh joseph@10.105.48.62
-Last login: Tue Oct 29 13:24:49 EDT 2024 from 10.93.3.108 on ssh
-Have a lot of fun...
-joseph@localhost:~> cd primes/csc3054-primes/
-joseph@localhost:~/primes/csc3054-primes> git pull
-remote: Enumerating objects: 27, done.
-remote: Counting objects: 100% (27/27), done.
-remote: Compressing objects: 100% (17/17), done.
-remote: Total 24 (delta 6), reused 23 (delta 5), pack-reused 0 (from 0)
-Unpacking objects: 100% (24/24), 3.90 KiB | 199.00 KiB/s, done.
-From https://github.com/jleskey/csc3054-primes
-   726d334..56217ca  main       -> origin/main
-Updating 726d334..56217ca
-Fast-forward
- assembly/counter.s      | 20 ++++++++++++++
- results/lab2_log.txt    | 71 +++++++++++++++++++++++++++++++++++++++++++++++++
- sources/nprimes-naive.c | 27 +++++++++++++++++++
- 3 files changed, 118 insertions(+)
- create mode 100644 assembly/counter.s
- create mode 100644 results/lab2_log.txt
- create mode 100644 sources/nprimes-naive.c
-joseph@localhost:~/primes/csc3054-primes> git status
-On branch main
-Your branch is up to date with 'origin/main'.
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-	extractions/
-
-nothing added to commit but untracked files present (use "git add" to track)
-joseph@localhost:~/primes/csc3054-primes> git add extractions/
-joseph@localhost:~/primes/csc3054-primes> git commit -m "Add objdump export"
-[main bcabf81] Add objdump export
- 1 file changed, 44231 insertions(+)
- create mode 100644 extractions/sum_primes.dump
-joseph@localhost:~/primes/csc3054-primes> git push
-Username for 'https://github.com': jleskey
-Password for 'https://jleskey@github.com': 
-Enumerating objects: 5, done.
-Counting objects: 100% (5/5), done.
-Delta compression using up to 6 threads
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (4/4), 294.96 KiB | 3.73 MiB/s, done.
-Total 4 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-To https://github.com/jleskey/csc3054-primes.git
-   56217ca..bcabf81  main -> main
-joseph@localhost:~/primes/csc3054-primes> gcc -o bin/counter assembly/counter.s 
-assembly/counter.s: Assembler messages:
-assembly/counter.s:10: Error: unknown mnemonic `lw' -- `lw t0,countup'
-assembly/counter.s:11: Error: unknown mnemonic `lw' -- `lw t1,countdown'
-assembly/counter.s:13: Error: unknown mnemonic `addi' -- `addi t0,t0,1'
-assembly/counter.s:14: Error: unknown mnemonic `addi' -- `addi t1,t1,-1'
-assembly/counter.s:15: Error: unknown mnemonic `sw' -- `sw t0,countup'
-assembly/counter.s:16: Error: unknown mnemonic `bnez' -- `bnez t1,loop'
-assembly/counter.s:18: Error: unknown mnemonic `li' -- `li a0,0'
-assembly/counter.s:19: Error: unknown mnemonic `li' -- `li a7,93'
-assembly/counter.s:20: Error: unknown mnemonic `ecall' -- `ecall'
-joseph@localhost:~/primes/csc3054-primes> riscv-elf-gcc -o bin/counter assembly/counter.s 
- riscv-elf-gcc: command not found
-joseph@localhost:~/primes/csc3054-primes> riscv64-elf-gcc -o bin/counter assembly/counter.s 
-assembly/counter.s: Assembler messages:
-assembly/counter.s:15: Error: illegal operands `sw t0,countup'
-joseph@localhost:~/primes/csc3054-primes> gcc -o bin/counter assembly/counter.s 
-assembly/counter.s: Assembler messages:
-assembly/counter.s:10: Error: unknown mnemonic `lw' -- `lw t0,countup'
-assembly/counter.s:11: Error: unknown mnemonic `lw' -- `lw t1,countdown'
-assembly/counter.s:12: Error: unknown mnemonic `la' -- `la t2,countup'
-assembly/counter.s:14: Error: unknown mnemonic `addi' -- `addi t0,t0,1'
-assembly/counter.s:15: Error: unknown mnemonic `addi' -- `addi t1,t1,-1'
-assembly/counter.s:16: Error: unknown mnemonic `sw' -- `sw t0,0(t2)'
-assembly/counter.s:17: Error: unknown mnemonic `bnez' -- `bnez t1,loop'
-assembly/counter.s:19: Error: unknown mnemonic `li' -- `li a0,0'
-assembly/counter.s:20: Error: unknown mnemonic `li' -- `li a7,93'
-assembly/counter.s:21: Error: unknown mnemonic `ecall' -- `ecall'
-joseph@localhost:~/primes/csc3054-primes> riscv64-elf-gcc -o bin/counter assembly/counter.s 
-joseph@localhost:~/primes/csc3054-primes> ./bin/counter 
--bash: ./bin/counter: cannot execute binary file: Exec format error
-joseph@localhost:~/primes/csc3054-primes> spike /usr/local/riscv64-elf/bin/pk bin/counter 
-joseph@localhost:~/primes/csc3054-primes> exit
-logout
-Connection to 10.105.48.62 closed.
-joseph@LJ-L23 ~ % ssh joseph@10.105.48.62
-Last login: Fri Nov  1 03:46:22 EDT 2024 from 10.105.48.16 on ssh
-Have a lot of fun...
-joseph@localhost:~> 
+joseph@localhost:~/primes/csc3054-primes> riscv64-elf-gcc -o bin/counter assembly/counter.s
+joseph@localhost:~/primes/csc3054-primes> spike /usr/local/riscv64-elf/bin/pk bin/counter
+joseph@localhost:~/primes/csc3054-primes>
